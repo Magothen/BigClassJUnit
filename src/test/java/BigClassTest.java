@@ -19,13 +19,11 @@ public class BigClassTest {
         Assertions.assertNull(null, testObject4.getText());
         Assertions.assertNull(null, testObject2.getText());
         Assertions.assertEquals(0, testObject2.getNumber());
-
-
     }
 
     @Test
     void testTextGetAndSet(){
-        BigClass testObject = new BigClass(); //ska inte skriva in något för att veta att det är just get/set som fixar det
+        BigClass testObject = new BigClass(); //ska inte skriva in något här inom prentes för att veta att det är just get/set som fixar att sätta värdet
         String expected = "Maria";
         testObject.setText("Maria");  // testa att skriva något annat i stringen
         Assertions.assertEquals(expected, testObject.getText());
@@ -45,10 +43,9 @@ public class BigClassTest {
         BigClass testObject = new BigClass();
         testObject.setText("blabla");
         String actual = testObject.textToUpperCase();
-        String expected = "BLABLA";
+        String expected = "BLABLA"; // testa att skriva något annat
         Assertions.assertEquals(expected, actual);
     }
-
 
     @Test
     @DisplayName("testar metodet textToNull")
@@ -68,6 +65,13 @@ public class BigClassTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("testar metoden toString")
+    void testToString(){
+        BigClass testObject = new BigClass(0, null);
+        Assertions.assertEquals("0 + null", testObject.toString());
+    }
+
 
     /* //Om det inte finns en metod då kan man testa så
     @ParameterizedTest
@@ -81,7 +85,5 @@ public class BigClassTest {
         Assertions.assertEquals(expected, actual);
     }
     */
-
-
 
 }

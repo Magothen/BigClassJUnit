@@ -1,12 +1,11 @@
 public class BigClass {
 
     //Standard-värde för number skall vara 0. Standard-värde för text skall vara null.
-    private int number; // ska man bara deklarera dem här eller ge utgångsvärde?
+    private int number;
     private String text;
 
     public BigClass() {
         this(0, null);
-
     }
 
     public BigClass(int num) {
@@ -14,7 +13,6 @@ public class BigClass {
     }
 
     public BigClass(String s) {
-
         this.text = s;
         this.number = 0;
     }
@@ -31,20 +29,18 @@ public class BigClass {
         }
     }
 
-    public int getNumber(){  //Getter för number-variabeln
-
+    //Getter för number-variabeln
+    public int getNumber(){
         return number;
     }
 
     //setter för text-variabeln.
     public void setText(String text) {
-
         this.text = text;
     }
 
     //Getter för text-variabeln.
     public String getText() {
-
         return text;
     }
 
