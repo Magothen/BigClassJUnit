@@ -2,22 +2,24 @@ public class BigClass {
 
     //Standard-värde för number skall vara 0. Standard-värde för text skall vara null.
     private int number; // ska man bara deklarera dem här eller ge utgångsvärde?
-    private String text = null;
+    private String text;
 
-    public BigClass() { // ska man ha utgångsvärde här?
-        this(0);
+    public BigClass() {
+        this(0, null);
+
     }
 
     public BigClass(int num) {
         this.number = num;
     }
 
-    public BigClass(String string) {
-        this.text = string;
+    public BigClass(String s) {
+
+        this.text = s;
+        this.number = 0;
     }
 
     public BigClass(int num, String txt) {
-        // this(num2, text2); // kanske så? men då kommer det upp "recursive constructor invocation" error
         number = num;
         text = txt;
     }
@@ -30,31 +32,33 @@ public class BigClass {
     }
 
     public int getNumber(){  //Getter för number-variabeln
+
         return number;
     }
 
     //setter för text-variabeln.
     public void setText(String text) {
+
         this.text = text;
     }
 
     //Getter för text-variabeln.
     public String getText() {
+
         return text;
     }
 
     //En metod för att göra om text-variabeln till stora bokstäver
     public String textToUpperCase(){
-        text = "Hello World!";
         System.out.println(text.toUpperCase());
         return text.toUpperCase();
     }
 
     //En metod för att göra om text-variabeln till null.
-    public boolean textToNull(){
-        text = "We are best";
-        System.out.println(text.isEmpty());
-        return text.isEmpty();
+    public String textToNull(){
+        text = null;
+        System.out.println(text);
+        return text;
     }
 
     /*En metod som adderar number med ett nytt tal, och ersätter number-variabeln med

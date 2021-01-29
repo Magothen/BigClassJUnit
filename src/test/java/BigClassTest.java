@@ -8,15 +8,24 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class BigClassTest {
 
     @Test
-    void testBigClassConstructor(){
+    void testBigClassConstructor(){  //tom konstruktor
         BigClass testObject = new BigClass();
+        BigClass testObject2 = new BigClass(0, "hej");
+        BigClass testObject3 = new BigClass(0);
+        BigClass testObject4 = new BigClass("hej");
         Assertions.assertEquals(0, testObject.getNumber());
         Assertions.assertNull(null, testObject.getText());
+        Assertions.assertEquals(0, testObject3.getNumber());
+        Assertions.assertNull(null, testObject4.getText());
+        Assertions.assertNull(null, testObject2.getText());
+        Assertions.assertEquals(0, testObject2.getNumber());
+
+
     }
 
     @Test
     void testTextGetAndSet(){
-        BigClass testObject = new BigClass("Maria");
+        BigClass testObject = new BigClass(); //ska inte skriva in något för att veta att det är just get/set som fixar det
         String expected = "Maria";
         testObject.setText("Maria");  // testa att skriva något annat i stringen
         Assertions.assertEquals(expected, testObject.getText());
@@ -24,7 +33,7 @@ public class BigClassTest {
 
     @Test
     void testNumberGetAndSet(){
-        BigClass testObject = new BigClass (0);
+        BigClass testObject = new BigClass ();
         int expected = 0;
         testObject.setNumber(0); // testa att skriva en annan siffra
         Assertions.assertEquals(expected, testObject.getNumber());
@@ -34,7 +43,10 @@ public class BigClassTest {
     @DisplayName("testar metoden toUpperCase")
     void test(){
         BigClass testObject = new BigClass();
-        testObject.textToUpperCase();
+        testObject.setText("blabla");
+        String actual = testObject.textToUpperCase();
+        String expected = "BLABLA";
+        Assertions.assertEquals(expected, actual);
     }
 
 
@@ -42,8 +54,8 @@ public class BigClassTest {
     @DisplayName("testar metodet textToNull")
     void testTextToNull(TestInfo testInfo){
         BigClass testObject = new BigClass();
-        boolean actual = testObject.textToNull();
-        Assertions.assertFalse(actual);
+        String actual = testObject.textToNull();
+        Assertions.assertNull(actual);
         System.out.println("Test " + testInfo.getDisplayName() + " concluded");
     }
 
