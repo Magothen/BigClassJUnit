@@ -6,7 +6,6 @@ public class BigClass {
 
     public BigClass() { // ska man ha utgångsvärde här?
         this(0);
-
     }
 
     public BigClass(int num) {
@@ -21,7 +20,6 @@ public class BigClass {
         // this(num2, text2); // kanske så? men då kommer det upp "recursive constructor invocation" error
         number = num;
         text = txt;
-
     }
 
     //setter för number-variabeln. Ett negativt tal skall ej accepteras till setNumber
@@ -35,7 +33,6 @@ public class BigClass {
         return number;
     }
 
-
     //setter för text-variabeln.
     public void setText(String text) {
         this.text = text;
@@ -46,13 +43,15 @@ public class BigClass {
         return text;
     }
 
-    public String textToUpperCase(){ //En metod för att göra om text-variabeln till stora bokstäver
+    //En metod för att göra om text-variabeln till stora bokstäver
+    public String textToUpperCase(){
         text = "Hello World!";
         System.out.println(text.toUpperCase());
         return text.toUpperCase();
     }
 
-    public boolean textToNull(){  //En metod för att göra om text-variabeln till null.
+    //En metod för att göra om text-variabeln till null.
+    public boolean textToNull(){
         text = "We are best";
         System.out.println(text.isEmpty());
         return text.isEmpty();

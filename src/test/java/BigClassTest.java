@@ -18,7 +18,7 @@ public class BigClassTest {
     void testTextGetAndSet(){
         BigClass testObject = new BigClass("Maria");
         String expected = "Maria";
-        testObject.setText("Blabla");
+        testObject.setText("Maria");  // testa att skriva något annat i stringen
         Assertions.assertEquals(expected, testObject.getText());
     }
 
@@ -26,16 +26,36 @@ public class BigClassTest {
     void testNumberGetAndSet(){
         BigClass testObject = new BigClass (0);
         int expected = 0;
-        testObject.setNumber(3);
+        testObject.setNumber(0); // testa att skriva en annan siffra
         Assertions.assertEquals(expected, testObject.getNumber());
     }
 
     @Test
-    @DisplayName("testar metoden toUpperCase: första sättet")
+    @DisplayName("testar metoden toUpperCase")
     void test(){
         BigClass testObject = new BigClass();
         testObject.textToUpperCase();
     }
+
+
+    @Test
+    @DisplayName("testar metodet textToNull")
+    void testTextToNull(TestInfo testInfo){
+        BigClass testObject = new BigClass();
+        boolean actual = testObject.textToNull();
+        Assertions.assertFalse(actual);
+        System.out.println("Test " + testInfo.getDisplayName() + " concluded");
+    }
+
+    @Test
+    @DisplayName("testar metoden AddNumber")
+    void testAddNumber(){
+        BigClass testObject = new BigClass(5);
+        int expected = 8;
+        int actual = testObject.addNumber(3);
+        Assertions.assertEquals(expected, actual);
+    }
+
 
     /* //Om det inte finns en metod då kan man testa så
     @ParameterizedTest
@@ -49,23 +69,6 @@ public class BigClassTest {
         Assertions.assertEquals(expected, actual);
     }
     */
-
-    @Test
-    @DisplayName("testar metodet textToNull")
-    void testTextToNull(TestInfo testInfo){
-        BigClass testObject = new BigClass();
-        boolean actual = testObject.textToNull();
-        Assertions.assertFalse(actual);
-        System.out.println("Test " + testInfo.getDisplayName() + " concluded");
-    }
-
-    @Test
-    void testAddNumber(){
-        BigClass testObject = new BigClass(5);
-        int expected = 8;
-        int actual = testObject.addNumber(3);
-        Assertions.assertEquals(expected, actual);
-    }
 
 
 
