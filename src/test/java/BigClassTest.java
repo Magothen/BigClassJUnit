@@ -2,8 +2,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 public class BigClassTest {
 
@@ -31,15 +29,19 @@ public class BigClassTest {
 
     @Test
     void testNumberGetAndSet(){
-        BigClass testObject = new BigClass ();
-        int expected = 0;
-        testObject.setNumber(0); // testa att skriva en annan siffra
-        Assertions.assertEquals(expected, testObject.getNumber());
+        BigClass testObject1 = new BigClass ();
+        BigClass testObject2 = new BigClass ();
+        int expected1 = 3;
+        int expected2 = 0; //testa skriva ett negativt tal - number borde sättas till 0 och ett felmeddelande ska komma från else
+        testObject1.setNumber(3); // testa att skriva en annan siffra, t.ex. om man skriver ett negativt tal så kommer det upp meddelande från else
+        testObject2.setNumber(-3);
+        Assertions.assertEquals(expected1, testObject1.getNumber());
+        Assertions.assertEquals(expected2, testObject2.getNumber());
     }
 
     @Test
     @DisplayName("testar metoden toUpperCase")
-    void test(){
+    void testToUpperCase(){
         BigClass testObject = new BigClass();
         testObject.setText("blabla");
         String actual = testObject.textToUpperCase();
@@ -71,19 +73,4 @@ public class BigClassTest {
         BigClass testObject = new BigClass(0, null);
         Assertions.assertEquals("0 + null", testObject.toString());
     }
-
-
-    /* //Om det inte finns en metod då kan man testa så
-    @ParameterizedTest
-    @DisplayName("testar metoden toUpperCase: andra sättet")
-    @CsvSource({
-            "MARIA, Maria",
-            "ALEXEY, aLeXey"
-    })
-    void testToUpperCase(String expected, String input){
-        String actual = input.toUpperCase();
-        Assertions.assertEquals(expected, actual);
-    }
-    */
-
 }

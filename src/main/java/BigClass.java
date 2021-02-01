@@ -27,6 +27,10 @@ public class BigClass {
         if(number >= 0) {
             this.number = number;
         }
+        else {
+            System.out.println("The number cannot be negative");
+        }
+
     }
 
     //Getter för number-variabeln
@@ -53,8 +57,7 @@ public class BigClass {
     //En metod för att göra om text-variabeln till null.
     public String textToNull(){
         text = null;
-        System.out.println(text);
-        return text;
+        return null;
     }
 
     /*En metod som adderar number med ett nytt tal, och ersätter number-variabeln med
